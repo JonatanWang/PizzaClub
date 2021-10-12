@@ -17,8 +17,8 @@ public class DbInitializer {
             var scheduleJson = arrayOfSchedules.get(i).getAsJsonObject();
 
             var date = new Date(Long.parseLong(scheduleJson.get("Date").toString().substring(7, 20)));
-            var personId = scheduleJson.get("PersonId").toString();
-            var name = scheduleJson.get("Name").toString();
+            var personId = scheduleJson.get("PersonId").toString().replace("\"", "");
+            var name = scheduleJson.get("Name").toString().replace("\"", "");
             var isFullDayAbsence = Boolean.parseBoolean(scheduleJson.get("IsFullDayAbsence").toString());
             var contractTimeMinutes = Integer.parseInt(scheduleJson.get("ContractTimeMinutes").toString());
             var projection = scheduleJson.get("Projection").getAsJsonArray();
@@ -50,8 +50,8 @@ public class DbInitializer {
             for (var j = 0; j < projection.size(); j ++) {
                 var activityJson = projection.get(j).getAsJsonObject();
 
-                var color = activityJson.get("Color").toString();
-                var description = activityJson.get("Description").toString();
+                var color = activityJson.get("Color").toString().replace("\"", "");
+                var description = activityJson.get("Description").toString().replace("\"", "");
                 var start = new Date(Long.parseLong(activityJson.get("Start").toString().substring(7, 20)));
                 var minutes = Integer.parseInt(activityJson.get("minutes").toString());
 
