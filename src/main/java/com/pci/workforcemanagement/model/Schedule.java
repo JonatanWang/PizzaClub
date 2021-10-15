@@ -1,6 +1,7 @@
 package com.pci.workforcemanagement.model;
 
 import lombok.*;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,6 +15,8 @@ import java.util.List;
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     private int id;
 
     @Getter
@@ -39,5 +42,6 @@ public class Schedule {
     @Getter
     @Setter
     @OneToMany(cascade = CascadeType.ALL)
+    @Nullable
     private List<Activity> activities;
 }
